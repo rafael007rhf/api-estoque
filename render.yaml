@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: guardiao-almoxarifado-api
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/healthcheck/ping
+    envVars:
+      - key: NODE_VERSION
+        value: 20.12.1
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: APP_NAME
+        value: guardiao-almoxarifado
